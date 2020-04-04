@@ -23,18 +23,16 @@ $(document).ready(function() {
 
   $("#today").text(month + " " + day  + " : ");
 
-  // alert("The current month is " + ;
-  // alert("day: " + d.getDate());
-
-  let pomoCount = localStorage.getItem("pomoCount1") || 0;
+  let pomoCount = localStorage.getItem(dayKey) || 0;
   $("#total").text(pomoCount);
+
   const timesUp = function() {
     $("audio")
       .get(0)
       .play();
     console.log("Timer up!");
     pomoCount++;
-    localStorage.setItem("pomoCount1", pomoCount);
+    localStorage.setItem(dayKey, pomoCount);
     $("#total").text(pomoCount);
 
     setTimeout(function() {
