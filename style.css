@@ -19,11 +19,12 @@ h1 {
 
 .logo {
   text-align: center;
+  margin-top: 5px;
 }
 
 .fa-clock {
   vertical-align: middle;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 }
 
 body {

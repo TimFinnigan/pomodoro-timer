@@ -14,11 +14,12 @@ $(document).ready(function() {
       
         ret += "" + mins + ":" + (secs < 10 ? "0" : "");
         ret += "" + secs;
+        if (secs === 0) alert('Timer is up!');
         return ret;
       }
       const countdownNumberEl = document.getElementById("countdown-number");
       const circle = document.getElementsByClassName("countdown-circle")[0];
-      const countdown = 300;
+      const countdown = 5;
       let newcountdown = countdown;
       const maxoffset = 2 * Math.PI * 100;
       let offset = 0;
