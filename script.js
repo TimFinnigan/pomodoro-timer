@@ -1,10 +1,33 @@
 $(document).ready(function() {
+  const updateTime = function() {
+    let minutes = parseInt($("#update-time").val());
+    localStorage.setItem("timerLength", minutes);
+    window.location.reload();
+  };
+
   let timerLength = localStorage.getItem("timerLength") || 25;
+
   $("#timerLength").text(timerLength + " min");
+
   $("#timerLength").click(function() {
     $("#timerLength").text("");
-    $("#timerLength").append("<input id='update-time' value='" + timerLength + "'>");
-    $("#update-time").focus().select();
+    $("#timerLength").append(
+      "<input id='update-time' value='" + timerLength + "'>"
+    );
+
+    $("#update-time")
+      .focus()
+      .select();
+
+    $("#update-time").keypress(function() {
+      if (event.keyCode === 13) {
+        updateTime();
+      }
+    });
+
+    $("#update-time").blur(function() {
+      updateTime();
+    });
   });
 
   const monthNames = [
@@ -29,7 +52,7 @@ $(document).ready(function() {
 
   let dayKey = month + day + year;
 
-  $("#today").text(month + " " + day  + " : ");
+  $("#today").text(month + " " + day + " : ");
 
   let pomoCount = localStorage.getItem(dayKey) || 0;
   $("#total").text(pomoCount);
@@ -123,5 +146,5 @@ $(document).ready(function() {
     }, 1000);
   };
 
-  startTimer(5);
+  startTimer(timerLength * 60);
 });
