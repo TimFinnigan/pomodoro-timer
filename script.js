@@ -1,15 +1,22 @@
 $(document).ready(function() {
   const timesUp = function() {
-    alert("Timer up!");
+    console.log("Timer up!");
     // play bell sound
     // update pomodors complete in local storage
-    // window.location.reload();
   };
+
+  const updateBadge = function(mins) {
+      if (chrome.browserAction) {
+        chrome.browserAction.setBadgeText({ text: String(mins) });
+      }
+  }
 
   const formatTime = function(time) {
     const hrs = ~~(time / 3600);
     const mins = ~~((time % 3600) / 60);
     const secs = ~~time % 60;
+
+    updateBadge(mins)
 
     let clock = "";
 
@@ -25,7 +32,7 @@ $(document).ready(function() {
 
   const countdownNumberEl = document.getElementById("countdown-number");
   const circle = document.getElementsByClassName("countdown-circle")[0];
-  const countdown = 5;
+  const countdown = 485;
   let newcountdown = countdown;
   const maxoffset = 2 * Math.PI * 100;
   let offset = 0;
