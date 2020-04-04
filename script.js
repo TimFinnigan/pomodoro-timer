@@ -1,7 +1,7 @@
 $(document).ready(function() {
   const updateTime = function() {
     let minutes = parseInt($("#update-time").val());
-    if (minutes < 0 || minutes > 59) {
+    if (minutes < 1 || minutes > 59) {
       window.location.reload();
       return false;
     }
