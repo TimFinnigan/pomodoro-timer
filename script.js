@@ -1,16 +1,18 @@
 $(document).ready(function() {
-  let pomoCount = localStorage.getItem("pomoCount") || 0;
+  let pomoCount = localStorage.getItem("pomoCount1") || 0;
   $("#total").text(pomoCount);
   const timesUp = function() {
-    var obj = document.createElement("audio");
-    obj.src = "https://www.soundjay.com/misc/sounds/small-bell-ring-01a.mp3";
-    obj.play();
+    $("audio")
+      .get(0)
+      .play();
     console.log("Timer up!");
     pomoCount++;
-    localStorage.setItem("pomoCount", pomoCount);
-    // $("#total").text(pomoCount);
-    // play bell sound
-    // update pomodors complete in local storage
+    localStorage.setItem("pomoCount1", pomoCount);
+    $("#total").text(pomoCount);
+
+    setTimeout(function() {
+      window.location.reload();
+    }, 1000);
   };
 
   const updateBadge = function(mins) {
