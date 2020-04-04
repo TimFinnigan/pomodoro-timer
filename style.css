@@ -80,3 +80,12 @@ body {
   stroke: tomato;
   animation: countdown 300s linear forwards;
 }
+
+i {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#buttons {
+  margin-left: 300px;
+}

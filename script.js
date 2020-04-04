@@ -6,18 +6,18 @@ $(document).ready(function() {
   };
 
   const updateBadge = function(mins) {
-      if (chrome.browserAction) {
-        if (mins === 0) mins = 1;
-        chrome.browserAction.setBadgeText({ text: String(mins) });
-      }
-  }
+    if (chrome.browserAction) {
+      if (mins === 0) mins = 1;
+      chrome.browserAction.setBadgeText({ text: String(mins) });
+    }
+  };
 
   const formatTime = function(time) {
     const hrs = ~~(time / 3600);
     const mins = ~~((time % 3600) / 60);
     const secs = ~~time % 60;
 
-    updateBadge(mins)
+    updateBadge(mins);
 
     let clock = "";
 
@@ -33,30 +33,46 @@ $(document).ready(function() {
 
   const countdownNumberEl = document.getElementById("countdown-number");
   const circle = document.getElementsByClassName("countdown-circle")[0];
-  const countdown = 55;
+  const countdown = 5;
   let newcountdown = countdown;
   const maxoffset = 2 * Math.PI * 100;
   let offset = 0;
 
   countdownNumberEl.textContent = formatTime(countdown);
 
+  let paused = false;
+
+  let startButton = $(".fa-start");
+
+  $(".fa-pause").click(function(){
+    alert("clicked");
+    paused = true;
+  });
+
+  startButton.onclick = function() {
+    paused = false;
+  };
+
   tick = setInterval(function() {
-    newcountdown = --newcountdown <= 0 ? 0 : newcountdown;
-
-    if (offset - maxoffset / countdown >= -Math.abs(maxoffset)) {
-      offset = offset - maxoffset / countdown;
+    if (paused) {
     } else {
-      offset = -Math.abs(maxoffset);
-      clearInterval(tick);
+      newcountdown = --newcountdown <= 0 ? 0 : newcountdown;
+
+      if (offset - maxoffset / countdown >= -Math.abs(maxoffset)) {
+        offset = offset - maxoffset / countdown;
+      } else {
+        offset = -Math.abs(maxoffset);
+        clearInterval(tick);
+      }
+
+      if (newcountdown === 0) {
+        timesUp();
+        clearInterval(tick);
+      }
+
+      countdownNumberEl.textContent = formatTime(newcountdown);
+
+      circle.setAttribute("style", "stroke-dashoffset:" + offset + "px");
     }
-
-    if (newcountdown === 0) {
-      timesUp();
-      clearInterval(tick);
-    }
-
-    countdownNumberEl.textContent = formatTime(newcountdown);
-
-    circle.setAttribute("style", "stroke-dashoffset:" + offset + "px");
   }, 1000);
 });
