@@ -1,6 +1,10 @@
 $(document).ready(function() {
   const timesUp = function() {
+    var obj = document.createElement("audio");
+    obj.src = "https://www.soundjay.com/misc/sounds/small-bell-ring-01a.mp3";
+    obj.play();
     console.log("Timer up!");
+
     // play bell sound
     // update pomodors complete in local storage
   };
@@ -48,14 +52,12 @@ $(document).ready(function() {
     $(".fa-play").hide();
     $(".fa-pause").show();
   });
-  
+
   $(".fa-pause").click(function() {
     paused = true;
     $(".fa-pause").hide();
     $(".fa-play").show();
   });
-
-
 
   tick = setInterval(function() {
     if (paused) {
