@@ -6,7 +6,7 @@ body {
   padding: 0px;
   margin: 0px;
   font-family: "Baloo 2", monospace;
-  color: #2f5876;
+  color: tomato;
 }
 
 h1 {
@@ -81,132 +81,7 @@ form i {
   font-size: 40px;
 }
 
-#toolbox-icon {
+.fa-clock {
   vertical-align: middle;
-}
-
-#settings-icon {
-  opacity: 1;
-  transition: opacity 0.2s ease-in-out;
-  font-size: 18px;
-  margin: 5px 0px 0px 5px;
-  vertical-align: top;
-}
-
-#close-icon {
-  opacity: 1;
-  transition: opacity 0.2s ease-in-out;
-  font-size: 18px;
-  vertical-align: top;
-  float: right;
-}
-
-#settings-icon:hover,
-#close-icon:hover,
-.fa-pencil-square-o:hover,
-.fa-save:hover,
-#add-item:hover {
-  cursor: pointer;
-}
-
-#form-container {
-  padding: 5px;
-  position: relative;
-}
-
-form input {
-  margin-left: 5px;
-}
-
-form a {
-  color: steelblue !important;
-  text-decoration: underline !important;
-}
-
-#sortable {
-  padding: 0;
-  width: 350px;
-  margin-left: 15px;
-  margin-top: 0px;
-}
-
-#sortable:hover {
-  cursor: ns-resize;
-}
-
-#sortable li {
-  margin: 0 3px 3px 3px;
-  border-bottom: 1px solid lightgrey;
-  padding: 0.4em;
-  padding-bottom: 10px;
-  /* padding-left: 1em; */
-  font-size: 1.1em;
-  height: 18px;
-}
-
-#sortable li:last-child {
-  border-bottom: none;
-}
-
-#sortable li span {
-  position: absolute;
-  margin-left: -1.3em;
-}
-
-.fa-pencil-square-o {
-  float: right;
-}
-
-#edit-form {
-  padding: 5px;
-  position: absolute;
-  background: white;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
-  left: 25%;
-}
-
-#edit-labels,
-#edit-inputs {
-  display: inline-block;
-}
-
-#edit-labels span,
-#edit-inputs span {
-  display: block;
-}
-
-#save-button {
-  margin-left: 0px;
-  margin-top: 5px;
-}
-
-#save-button:hover {
-  cursor: pointer;
-}
-
-#add-item {
-  margin-left: 15px;
-}
-
-#add-item i {
-  margin-right: 5px;
-}
-
-.title {
-  padding-left: 15px;
-}
-.title input {
-  height: 20px;
-  width: 300px;
-  padding-left: 0px;
-  font-style: italic;
-  font-size: 14px;
-  font-family: "Baloo 2", monospace;
-  color: darkgrey;
-}
-
-.fa-save {
-  float: right;
-  font-size: 18px;
+  margin-bottom: 3px;
 }
