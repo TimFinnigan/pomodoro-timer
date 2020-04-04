@@ -45,7 +45,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: auto;
-  margin-top: 10px;
+  margin-top: 0px;
   margin-bottom: 10px;
   height: 200px;
   width: 200px;
@@ -103,4 +103,11 @@ i {
 
 #buttons {
   margin-left: 25px;
+}
+
+#minutes {
+  text-align: right;
+  margin-right: 80px;
+  margin-top: 5px;
+  font-size: 16px;
 }

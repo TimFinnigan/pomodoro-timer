@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  $("#minutes").text(5 + " min");
+
   const monthNames = [
     "January",
     "February",
