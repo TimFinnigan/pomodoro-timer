@@ -117,3 +117,12 @@ i {
   margin-top: 10px;
   font-size: 16px;
 }
+
+#update-time {
+  width: 45px;
+  font-size: 16px;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  color: darkgrey;
+}

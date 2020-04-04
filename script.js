@@ -1,6 +1,11 @@
 $(document).ready(function() {
   let timerLength = localStorage.getItem("timerLength") || 25;
   $("#timerLength").text(timerLength + " min");
+  $("#timerLength").click(function() {
+    $("#timerLength").text("");
+    $("#timerLength").append("<input id='update-time' value='" + timerLength + "'>");
+    $("#update-time").focus().select();
+  });
 
   const monthNames = [
     "January",
