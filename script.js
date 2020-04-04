@@ -41,17 +41,19 @@ $(document).ready(function() {
   countdownNumberEl.textContent = formatTime(countdown);
 
   let paused = false;
+  $(".fa-play").hide();
 
-  let startButton = $(".fa-start");
-
-  $(".fa-pause").click(function(){
-    alert("clicked");
+  $(".fa-pause").click(function() {
     paused = true;
+    $(".fa-pause").hide();
+    $(".fa-play").show();
   });
 
-  startButton.onclick = function() {
+  $(".fa-play").click(function() {
     paused = false;
-  };
+    $(".fa-play").hide();
+    $(".fa-pause").show();
+  });
 
   tick = setInterval(function() {
     if (paused) {
