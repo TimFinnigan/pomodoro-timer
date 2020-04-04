@@ -1,5 +1,6 @@
 $(document).ready(function() {
-  $("#minutes").text(5 + " min");
+  let timerLength = localStorage.getItem("timerLength") || 25;
+  $("#timerLength").text(timerLength + " min");
 
   const monthNames = [
     "January",
