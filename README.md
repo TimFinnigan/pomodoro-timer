@@ -1,2 +1,2 @@
 # pomodoro-timer
-A simple pomodoro timer Chrome extension
+A simple Pomodoro timer Chrome extension
