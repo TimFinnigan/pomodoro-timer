@@ -7,6 +7,7 @@ $(document).ready(function() {
 
   const updateBadge = function(mins) {
       if (chrome.browserAction) {
+        if (mins === 0) mins = 1;
         chrome.browserAction.setBadgeText({ text: String(mins) });
       }
   }
@@ -32,7 +33,7 @@ $(document).ready(function() {
 
   const countdownNumberEl = document.getElementById("countdown-number");
   const circle = document.getElementsByClassName("countdown-circle")[0];
-  const countdown = 485;
+  const countdown = 55;
   let newcountdown = countdown;
   const maxoffset = 2 * Math.PI * 100;
   let offset = 0;
