@@ -1,4 +1,31 @@
 $(document).ready(function() {
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  let d = new Date();
+  let month = monthNames[d.getMonth()];
+  let day = d.getDate();
+  let year = d.getFullYear();
+
+  let dayKey = month + day + year;
+
+  $("#today").text(month + " " + day  + " : ");
+
+  // alert("The current month is " + ;
+  // alert("day: " + d.getDate());
+
   let pomoCount = localStorage.getItem("pomoCount1") || 0;
   $("#total").text(pomoCount);
   const timesUp = function() {
