@@ -1,10 +1,14 @@
 $(document).ready(function() {
+  let pomoCount = localStorage.getItem("pomoCount") || 0;
+  $("#total").text(pomoCount);
   const timesUp = function() {
     var obj = document.createElement("audio");
     obj.src = "https://www.soundjay.com/misc/sounds/small-bell-ring-01a.mp3";
     obj.play();
     console.log("Timer up!");
-
+    pomoCount++;
+    localStorage.setItem("pomoCount", pomoCount);
+    // $("#total").text(pomoCount);
     // play bell sound
     // update pomodors complete in local storage
   };
@@ -35,15 +39,6 @@ $(document).ready(function() {
     return clock;
   };
 
-  const countdownNumberEl = document.getElementById("countdown-number");
-  const circle = document.getElementsByClassName("countdown-circle")[0];
-  const countdown = 5;
-  let newcountdown = countdown;
-  const maxoffset = 2 * Math.PI * 100;
-  let offset = 0;
-
-  countdownNumberEl.textContent = formatTime(countdown);
-
   let paused = true;
   $(".fa-pause").hide();
 
@@ -59,26 +54,39 @@ $(document).ready(function() {
     $(".fa-play").show();
   });
 
-  tick = setInterval(function() {
-    if (paused) {
-    } else {
-      newcountdown = --newcountdown <= 0 ? 0 : newcountdown;
+  const startTimer = function(duration) {
+    const countdownNumberEl = document.getElementById("countdown-number");
+    const circle = document.getElementsByClassName("countdown-circle")[0];
+    const countdown = duration;
+    let newcountdown = countdown;
+    const maxoffset = 2 * Math.PI * 100;
+    let offset = 0;
 
-      if (offset - maxoffset / countdown >= -Math.abs(maxoffset)) {
-        offset = offset - maxoffset / countdown;
+    countdownNumberEl.textContent = formatTime(countdown);
+
+    tick = setInterval(function() {
+      if (paused) {
       } else {
-        offset = -Math.abs(maxoffset);
-        clearInterval(tick);
+        newcountdown = --newcountdown <= 0 ? 0 : newcountdown;
+
+        if (offset - maxoffset / countdown >= -Math.abs(maxoffset)) {
+          offset = offset - maxoffset / countdown;
+        } else {
+          offset = -Math.abs(maxoffset);
+          clearInterval(tick);
+        }
+
+        if (newcountdown === 0) {
+          timesUp();
+          clearInterval(tick);
+        }
+
+        countdownNumberEl.textContent = formatTime(newcountdown);
+
+        circle.setAttribute("style", "stroke-dashoffset:" + offset + "px");
       }
+    }, 1000);
+  };
 
-      if (newcountdown === 0) {
-        timesUp();
-        clearInterval(tick);
-      }
-
-      countdownNumberEl.textContent = formatTime(newcountdown);
-
-      circle.setAttribute("style", "stroke-dashoffset:" + offset + "px");
-    }
-  }, 1000);
+  startTimer(5);
 });
