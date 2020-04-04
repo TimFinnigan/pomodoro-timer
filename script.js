@@ -40,20 +40,22 @@ $(document).ready(function() {
 
   countdownNumberEl.textContent = formatTime(countdown);
 
-  let paused = false;
-  $(".fa-play").hide();
-
-  $(".fa-pause").click(function() {
-    paused = true;
-    $(".fa-pause").hide();
-    $(".fa-play").show();
-  });
+  let paused = true;
+  $(".fa-pause").hide();
 
   $(".fa-play").click(function() {
     paused = false;
     $(".fa-play").hide();
     $(".fa-pause").show();
   });
+  
+  $(".fa-pause").click(function() {
+    paused = true;
+    $(".fa-pause").hide();
+    $(".fa-play").show();
+  });
+
+
 
   tick = setInterval(function() {
     if (paused) {
