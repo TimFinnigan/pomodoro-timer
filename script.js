@@ -9,58 +9,6 @@ $(document).ready(function() {
     window.location.reload();
   };
 
-  let timerLength = localStorage.getItem("timerLength") || 25;
-
-  $("#timerLength").text(timerLength + " min");
-
-  $("#timerLength").click(function() {
-    $("#timerLength").text("");
-    $("#timerLength").append(
-      "<input id='update-time' value='" + timerLength + "'>"
-    );
-
-    $("#update-time")
-      .focus()
-      .select();
-
-    $("#update-time").keypress(function() {
-      if (event.keyCode === 13) {
-        updateTime();
-      }
-    });
-
-    $("#update-time").blur(function() {
-      updateTime();
-    });
-  });
-
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-
-  let d = new Date();
-  let month = monthNames[d.getMonth()];
-  let day = d.getDate();
-  let year = d.getFullYear();
-
-  let dayKey = month + day + year;
-
-  $("#today").text(month + " " + day + " : ");
-
-  let pomoCount = localStorage.getItem(dayKey) || 0;
-  $("#total").text(pomoCount);
-
   const timesUp = function() {
     $("audio")
       .get(0)
@@ -101,21 +49,6 @@ $(document).ready(function() {
     return clock;
   };
 
-  let paused = true;
-  $(".fa-pause").hide();
-
-  $(".fa-play").click(function() {
-    paused = false;
-    $(".fa-play").hide();
-    $(".fa-pause").show();
-  });
-
-  $(".fa-pause").click(function() {
-    paused = true;
-    $(".fa-pause").hide();
-    $(".fa-play").show();
-  });
-
   const startTimer = function(duration) {
     const countdownNumberEl = document.getElementById("countdown-number");
     const circle = document.getElementsByClassName("countdown-circle")[0];
@@ -149,6 +82,75 @@ $(document).ready(function() {
       }
     }, 1000);
   };
+
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  let d = new Date();
+  let month = monthNames[d.getMonth()];
+  let day = d.getDate();
+  let year = d.getFullYear();
+  let dayKey = month + day + year;
+
+  let paused = true;
+
+  let timerLength = localStorage.getItem("timerLength") || 25;
+
+  let pomoCount = localStorage.getItem(dayKey) || 0;
+
+
+  $("#timerLength").text(timerLength + " min");
+  
+  $("#timerLength").click(function() {
+    $("#timerLength").text("");
+    $("#timerLength").append(
+      "<input id='update-time' value='" + timerLength + "'>"
+    );
+
+    $("#update-time")
+      .focus()
+      .select();
+
+    $("#update-time").keypress(function() {
+      if (event.keyCode === 13) {
+        updateTime();
+      }
+    });
+
+    $("#update-time").blur(function() {
+      updateTime();
+    });
+  });
+
+  $("#today").text(month + " " + day + " : ");
+
+  $("#total").text(pomoCount);
+
+  $(".fa-pause").hide();
+
+  $(".fa-play").click(function() {
+    paused = false;
+    $(".fa-play").hide();
+    $(".fa-pause").show();
+  });
+
+  $(".fa-pause").click(function() {
+    paused = true;
+    $(".fa-pause").hide();
+    $(".fa-play").show();
+  });
 
   startTimer(timerLength * 60);
 });
