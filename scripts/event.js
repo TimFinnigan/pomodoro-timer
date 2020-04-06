@@ -1,5 +1,5 @@
 var started = null;
-var timerLengthInSeconds = 1500;
+var timerLengthInSeconds = 1499;
 var lastElapsedLengthInSeconds;
 
 var tickId;
@@ -98,7 +98,7 @@ function handleUserStopped() {
  */
 function updateCounter() {
   var remainingTimeInSeconds = remainingTime();
-  let remainingTimeMinutes = parseInt(remainingTimeInSeconds.toFixed(0) / 60);
+  let remainingTimeMinutes = parseInt(remainingTimeInSeconds.toFixed(0) / 60) + 1;
 
   if (remainingTimeMinutes > 10) {
     chrome.browserAction.setBadgeBackgroundColor({ color: [34, 139, 34, 255] });
@@ -108,7 +108,7 @@ function updateCounter() {
     chrome.browserAction.setBadgeBackgroundColor({ color: [139, 0, 0, 255] });
   }
 
-  if (remainingTimeMinutes < 1) {
+  if (remainingTimeMinutes <= 1) {
     chrome.browserAction.setBadgeText({
       text: remainingTimeInSeconds.toFixed(0)
     });
