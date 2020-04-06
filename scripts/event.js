@@ -1,5 +1,5 @@
 var started = null;
-var timerLengthInSeconds = 1499;
+var timerLengthInSeconds = 1399;
 var lastElapsedLengthInSeconds;
 
 var tickId;
@@ -77,14 +77,14 @@ function handleTimerExpired() {
   myAudio.play();
 
   stop();
-  chrome.browserAction.setBadgeText({ text: "0s" });
+  chrome.browserAction.setBadgeText({ text: "0" });
 }
 
 /**
  *  Callback for when the user manually stops the timer, which allows them to resume it
  */
 function handleUserStopped() {
-  stop();
+  stop(); 
   chrome.browserAction.setBadgeBackgroundColor({ color: [0, 0, 255, 255] });
 
   // Allow the timer to be resumed if necessary
@@ -100,9 +100,9 @@ function updateCounter() {
   var remainingTimeInSeconds = remainingTime();
   let remainingTimeMinutes = parseInt(remainingTimeInSeconds.toFixed(0) / 60) + 1;
 
-  if (remainingTimeMinutes > 10) {
+  if (remainingTimeMinutes > 5) {
     chrome.browserAction.setBadgeBackgroundColor({ color: [34, 139, 34, 255] });
-  } else if (remainingTimeMinutes > 5) {
+  } else if (remainingTimeMinutes > 1) {
     chrome.browserAction.setBadgeBackgroundColor({ color: [255, 165, 0, 255] });
   } else {
     chrome.browserAction.setBadgeBackgroundColor({ color: [139, 0, 0, 255] });
