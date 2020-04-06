@@ -1,5 +1,5 @@
 var started = null;
-var timerLengthInSeconds = 1399;
+var timerLengthInSeconds = 1499;
 var lastElapsedLengthInSeconds;
 
 var tickId;
