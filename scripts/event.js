@@ -1,5 +1,5 @@
 var started = null;
-var timerLengthInSeconds = 120;
+var timerLengthInSeconds = 1500;
 var lastElapsedLengthInSeconds;
 
 var tickId;
@@ -102,6 +102,8 @@ function updateCounter() {
 
   if (remainingTimeMinutes > 10) {
     chrome.browserAction.setBadgeBackgroundColor({ color: [34, 139, 34, 255] });
+  } else if (remainingTimeMinutes > 5) {
+    chrome.browserAction.setBadgeBackgroundColor({ color: [255, 165, 0, 255] });
   } else {
     chrome.browserAction.setBadgeBackgroundColor({ color: [139, 0, 0, 255] });
   }
